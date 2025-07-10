@@ -1,36 +1,55 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# 📊 Digital Marketing Analytics Toolkit
 
-## Getting Started
+A professional toolkit for Digital Marketing Strategy and Google Analytics Reporting, focused on performance tracking, automated reporting, SEO audit, and campaign optimization.
 
-First, run the development server:
+---
+
+## 🎯 Project Overview
+
+This repository contains scripts, dashboards, and tools designed for:
+- Google Analytics 4 (GA4) Data Extraction
+- Google Ads and Facebook Ads Performance Tracking
+- SEO Keyword Auditing and SERP Analysis
+- UTM Parameter Management
+- Automated Reporting with Google Sheets & Looker Studio
+
+Ideal for digital marketers, analysts, and agencies looking to optimize campaigns with data-driven insights.
+
+---
+
+## 🧰 Tools & Technologies
+
+- **Google Analytics 4 (GA4)**
+- **Google Tag Manager (GTM)**
+- **Google Ads & Facebook Ads API**
+- **Python / JavaScript**
+- **Google Apps Script**
+- **Google Sheets / Looker Studio**
+- **SEMrush / Ahrefs / Moz (optional integration)**
+
+---
+
+## 📦 Features
+
+- ✅ Automated GA4 & Ads Data Fetching
+- ✅ Real-time Campaign Tracking Dashboard
+- ✅ SEO Site Auditing Tool
+- ✅ UTM Builder & Validator
+- ✅ Email Reports via Google Apps Script
+
+---
+
+## 🚀 Getting Started
+
+### Requirements
+
+- Google Cloud Project (for GA4 & Ads API)
+- API Keys (where applicable)
+- Python 3.9+ or Google Apps Script account
+
+### Installation (for Python tools)
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
-
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
-
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
-
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+git clone https://github.com/yourusername/marketing-analytics-toolkit.git
+cd marketing-analytics-toolkit
+pip install -r requirements.txt
