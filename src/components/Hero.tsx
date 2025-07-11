@@ -1,20 +1,24 @@
 'use client'
-import React, { useEffect } from 'react';
+import React, { useRef, useEffect } from 'react';
 import heroImg from '../assets/hero-image.png'; // Update with your image path
 import Image from 'next/image';
 import styles from '../components/Hero.module.css';
 
 const Hero = () => {
+  const navRef = useRef<HTMLDivElement>(null);
+  const heroRef = useRef<HTMLDivElement>(null);
+  useEffect(() => {
+    
+    if (navRef.current && heroRef.current) {
+      const navHeight = navRef.current.offsetHeight;
+      heroRef.current.style.minHeight = `calc(100vh - ${navHeight}px)`;
+    }
+  }, []);
 
-  useEffect(()=>{
-    const nav_top_container = document.getElementById('nav-bar-top');
-    console.log(nav_top_container)
-  },[]);
-  
   return (
-    <section className="bg-gray-100 min-h-screen flex items-center px-6">
+    <section className="min-h-[calc(100vh-4rem)] bg-gray-200 flex items-center  px-6">
       <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between w-full gap-10">
-        
+
         {/* Left Content */}
         <div className="flex-1 text-center md:text-left">
           <h1 className="text-4xl md:text-6xl font-bold text-gray-800 mb-4">
@@ -38,8 +42,8 @@ const Hero = () => {
           <Image
             src={heroImg}
             alt="Rashedul Alam"
-            className={ `${styles.animate_float} w-full max-w-sm mx-auto rounded-xl shadow-xl`}
-            
+            className={`${styles.animate_float} w-full max-w-sm mx-auto rounded-xl shadow-xl`}
+
           />
         </div>
       </div>

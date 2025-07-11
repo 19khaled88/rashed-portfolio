@@ -18,7 +18,7 @@ export default function Navbar() {
     ];
 
     return (
-        <nav className="nav-bar-top block w-full max-w-screen px-4 py-4 mx-auto bg-white bg-opacity-90 sticky top-3 shadow lg:px-8 backdrop-blur-lg backdrop-saturate-150 z-[9999]">
+        <nav className="nav-bar-top block h-16 w-full max-w-screen mx-auto bg-white bg-opacity-90 sticky top-0 shadow lg:px-8 backdrop-blur-lg backdrop-saturate-150 z-[9999]">
             <div className="container flex flex-wrap items-center justify-between mx-auto text-slate-800">
                 <Link
                     href="/"
