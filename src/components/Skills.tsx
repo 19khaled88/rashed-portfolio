@@ -32,7 +32,7 @@ const Skills = () => {
       title: "Tracking & Marketing",
       icon: <SiGoogleads className="text-red-500 text-2xl" />,
       skills: [
-        { name: "Conversion Tracking & Attribution", level: "95%" },
+        { name: "Conversion Tracking & Attributions", level: "95%" },
         { name: "Facebook Pixel & Conversion API (CAPI)", level: "90%" },
         { name: "Google Ads Conversion Tracking", level: "90%" },
         { name: "Meta Ads Tracking", level: "85%" },
