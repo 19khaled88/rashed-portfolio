@@ -2,7 +2,7 @@
 'use client';
 
 import { useState, useRef } from 'react';
-import { Play, Pause } from 'lucide-react';
+import { Play} from 'lucide-react';
 
 interface SimpleVideoPlayerProps {
   src: string;

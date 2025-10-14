@@ -1,5 +1,5 @@
 // components/Footer.tsx
-import { FaGithub, FaLinkedin, FaTwitter, FaRegEnvelope, FaFacebook, FaInstagram, FaGlobe, FaArrowRight } from 'react-icons/fa';
+import { FaGithub, FaLinkedin,  FaRegEnvelope, FaFacebook, FaInstagram, FaGlobe, FaArrowRight } from 'react-icons/fa';
 import { IoCallOutline, IoLocationOutline } from 'react-icons/io5';
 
 export default function Footer() {
@@ -154,7 +154,7 @@ export default function Footer() {
                 Start a Project
               </h4>
               <p className="text-gray-300 text-sm mb-4">
-                Ready to transform your data into insights? Let's discuss your project.
+                Ready to transform your data into insights? Let&apos;s discuss your project.
               </p>
             </div>
             

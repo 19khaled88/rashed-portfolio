@@ -1,5 +1,5 @@
 // pages/demo.tsx or components/VideoDemo.tsx
-import SimpleVideoPlayer from "./SimpleVideoPlayer";
+
 import VideoPlayer from "./VideoPlayer";
 
 export default function VideoDemo() {
