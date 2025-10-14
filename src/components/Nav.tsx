@@ -11,11 +11,25 @@ export default function Navbar() {
 
     // Navigation items array
     const navItems = [
-        { name: "Home", href: "/", icon: HomeIcon },
-        { name: "About", href: "/about", icon: InformationCircleIcon },
-        { name: "Portfolio", href: "/portfolio", icon: BriefcaseIcon },
-        { name: "Contact", href: "/contact", icon: EnvelopeIcon },
+        { name: "Home", href: "#hero", icon: HomeIcon },
+        { name: "About", href: "#about", icon: InformationCircleIcon },
+        { name: "Expertise", href: "#skills", icon: BriefcaseIcon },
+        { name: "Service&Project", href: "#Projects", icon: BriefcaseIcon },
+        { name: "Demo", href: "#videDemo", icon: BriefcaseIcon },
+        { name: "Contact", href: "#contact", icon: EnvelopeIcon },
     ];
+
+    const handleNavClick =(href:string)=>{
+        setIsMobileMenuOpen(false);
+
+        // If it's a hash link ( link #contact), scroll to that section 
+        if(href.startsWith('#')){
+            const element = document.querySelector(href);
+            if(element){
+                element.scrollIntoView({behavior: 'smooth'});
+            }
+        }
+    }
 
     return (
         <nav className="nav-bar-top block h-16 w-full max-w-screen mx-auto bg-white bg-opacity-90 sticky top-0 shadow lg:px-8 backdrop-blur-lg backdrop-saturate-150 z-[9999]">
@@ -24,7 +38,7 @@ export default function Navbar() {
                     href="/"
                     className="mr-4 block cursor-pointer py-1.5 text-red-600 font-bold text-2xl"
                 >
-                    Hero
+                    Rashedul Alam
                 </Link>
 
                 <div className="lg:hidden">
@@ -61,11 +75,12 @@ export default function Navbar() {
                             href="/"
                             className="cursor-pointer text-red-600 font-bold text-xl pt-4 ps-4"
                         >
-                            Hero
+                            Rashedul Alam
                         </Link>
                         <button
                             onClick={toggleMobileMenu}
                             className="absolute top-4 right-4 text-slate-600 hover:text-red-500"
+                            type="button"
                         >
                             <svg
                                 xmlns="http://www.w3.org/2000/svg"
@@ -90,7 +105,11 @@ export default function Navbar() {
                                     key={index}
                                     className="flex items-center p-1 text-lg gap-x-2 text-slate-600 hover:text-red-500"
                                 >
-                                    <Link onClick={() => { setIsMobileMenuOpen(false); }} href={item.href} className="flex items-center">
+                                    <Link 
+                                        onClick={() => { handleNavClick(item.href) }} 
+                                        href={item.href} 
+                                        className="flex items-center"
+                                    >
                                         <Icon className="w-5 h-5 mr-1" />
                                         {item.name}
                                     </Link>
@@ -116,7 +135,11 @@ export default function Navbar() {
                                     key={index}
                                     className="flex items-center p-1 text-lg gap-x-2 text-slate-600 hover:text-red-500"
                                 >
-                                    <Link onClick={() => setIsMobileMenuOpen(false)} href={item.href} className="flex items-center">
+                                    <Link 
+                                        href={item.href} 
+                                        className="flex items-center"
+                                        onClick={() => handleNavClick(item.href)} 
+                                    >
                                         <Icon className="w-5 h-5 mr-1" />
                                         <label className="text-align:center">{item.name}</label>
                                     </Link>

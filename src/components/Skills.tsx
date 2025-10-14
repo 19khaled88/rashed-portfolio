@@ -18,23 +18,25 @@ const Skills = () => {
 
   const skillCategories = [
     {
-      title: "Google Analytics",
+      title: "Analytics & Data",
       icon: <SiGoogleanalytics className="text-blue-500 text-2xl" />,
       skills: [
-        { name: "GA4", level: "95%" },
-        { name: "Looker Studio", level: "90%" },
-        { name: "BigQuery", level: "85%" },
-        { name: "Universal Analytics", level: "80%" }
+        { name: "Google Analytics 4 (GA4)", level: "95%" },
+        { name: "Google Tag Manager (Web & Server-Side)", level: "90%" },
+        { name: "Looker Studio Dashboards", level: "90%" },
+        { name: "BigQuery& Data Layer Setup", level: "85%" },
+        { name: "•	Universal Analytics (Legacy Support)", level: "80%" }
       ]
     },
     {
-      title: "Digital Marketing",
+      title: "Tracking & Marketing",
       icon: <SiGoogleads className="text-red-500 text-2xl" />,
       skills: [
-        { name: "Google Ads", level: "90%" },
-        { name: "SEO", level: "85%" },
-        { name: "Meta Ads", level: "80%" },
-        { name: "Conversion Tracking", level: "95%" }
+        { name: "Conversion Tracking & Attributions", level: "95%" },
+        { name: "Facebook Pixel & Conversion API (CAPI)", level: "90%" },
+        { name: "Google Ads Conversion Tracking", level: "90%" },
+        { name: "Meta Ads Tracking", level: "85%" },
+        { name: "SEO & Data-Driven Marketing", level: "80%" }
       ]
     }
   ];
@@ -43,7 +45,7 @@ const Skills = () => {
     <section 
       ref={sectionRef}
       id="skills" 
-      className="min-h-[calc(100vh-4rem)] py-12 bg-pink-200 flex flex-col overflow-hidden"
+      className="min-h-[calc(100vh-4rem)] py-12 bg-slate-100 flex flex-col overflow-hidden"
     >
       {/* Title at the top */}
       <div className={`pt-8 text-center transition-all duration-500 ease-out ${inView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>

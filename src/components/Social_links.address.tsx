@@ -1,5 +1,5 @@
 'use client'
-import { FaGithub, FaLinkedin, FaTwitter, FaInstagram, FaEnvelope, FaMapMarkerAlt, FaPhone, FaGlobe, FaFacebook } from 'react-icons/fa';
+import { FaGithub, FaLinkedin, FaInstagram, FaEnvelope, FaMapMarkerAlt, FaPhone, FaGlobe, FaFacebook } from 'react-icons/fa';
 import { useInView } from 'react-intersection-observer';
 
 interface SocialLink {
@@ -25,22 +25,22 @@ const ContactInfo = () => {
   // Social links data
   const socialLinks: SocialLink[] = [
     { name: 'GitHub', url: 'https://github.com/yourusername', icon: <FaGithub /> },
-    { name: 'LinkedIn', url: 'https://linkedin.com/in/yourusername', icon: <FaLinkedin /> },
-    { name: 'Twitter', url: 'https://twitter.com/yourusername', icon: <FaTwitter /> },
-    { name: 'Instagram', url: 'https://instagram.com/yourusername', icon: <FaInstagram /> },
-    { name: 'Facebook', url: 'mailto:your.email@example.com', icon: <FaFacebook /> },
+    { name: 'LinkedIn', url: 'https://www.linkedin.com/in/trackingrashed/', icon: <FaLinkedin /> },
+    
+    { name: 'Instagram', url: 'https://www.instagram.com/rashedulalam362/', icon: <FaInstagram /> },
+    { name: 'Facebook', url: 'https://www.facebook.com/md.rashedul.alam.639050/', icon: <FaFacebook /> },
   ];
 
   // Address information
   const addressInfo: AddressInfo = {
-    location: '123 Creative St., Design City, 10001',
-    phone: '+1 (123) 456-7890',
+    location: 'Chittagong, Bangladesh',
+    phone: '+880 17 3044 4520',
     email: 'your.email@example.com',
     website: 'yourportfolio.com',
   };
 
   return (
-    <section ref={ref} className="min-h-[calc(100vh-4rem)] flex flex-col">
+    <section ref={ref} className="min-h-[calc(100vh-4rem)] flex flex-col overflow-hidden">
       {/* Title at the top */}
       <div className={`pt-12 text-center transition-all duration-900 ease-out ${inView ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-10'}`}>
         <h1 className="text-3xl font-bold text-gray-800 dark:text-white">Connect With Me</h1>

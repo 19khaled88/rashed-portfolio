@@ -1,7 +1,7 @@
 'use client'
 import React, { useEffect, useRef, useState } from 'react';
 
-const SkillBar = ({ name, percent,animate = false, delay = 0 }:{name:string,percent:string,animate?:boolean,delay?:number}) => {
+const SkillBar = ({  name, percent,animate = false, delay = 0 }:{name:string,percent:string,animate?:boolean,delay?:number}) => {
     const [width, setWidth] = useState('0%');
     const barRef = useRef(null);
 
