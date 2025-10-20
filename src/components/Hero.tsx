@@ -21,7 +21,7 @@ const Hero = () => {
   };
 
   return (
-    <section className="min-h-[calc(100vh-4rem)] bg-neutral-50 flex items-center" id='hero'>
+    <section className="min-h-[calc(100vh-4rem)] bg-neutral-100 flex items-center" id='home'>
       <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between w-full gap-10">
 
         {/* Left Content */}

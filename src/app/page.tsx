@@ -1,6 +1,8 @@
 import About from "@/components/About.me";
 import Footer from "@/components/Footer";
 import Hero from "@/components/Hero";
+import Projects from "@/components/Projects";
+import Services from "@/components/Services";
 import ServicesAndProjects from "@/components/ServicesAndProjects";
 import Skills from "@/components/Skills";
 import VideoDemo from "@/components/VideoDemo";
@@ -13,9 +15,11 @@ export default function Home() {
         
         <Hero />
         <About />
-        <Skills />
+       
         {/* <ContactInfo /> */}
-        <ServicesAndProjects />
+        
+        <Services />
+        <Projects />
         <VideoDemo />
         <Footer />
       </main>

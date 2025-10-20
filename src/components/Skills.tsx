@@ -76,6 +76,7 @@ const Skills = () => {
                       percent={skill.level}
                       animate={inView}
                       delay={skillIndex * 100 + index * 100}
+                     
                     />
                   ))}
                 </div>
