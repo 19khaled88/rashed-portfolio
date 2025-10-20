@@ -4,15 +4,15 @@ import VideoPlayer from "./VideoPlayer";
 
 export default function VideoDemo() {
     return (
-        <div className="min-h-[calc(100vh-4rem)] bg-gradient-to-br from-gray-50 to-gray-100 py-12 overflow-hidden" id="videDemo">
+        <div className="min-h-[calc(100vh-4rem)] bg-gradient-to-br from-gray-50 to-gray-100 py-12 overflow-hidden" id="demo">
             
                 {/* Header */}
-                <div className="text-center space-y-4">
+                <div className="text-center space-y-4 pt-8">
                     <h1 className="text-4xl font-bold text-gray-900 bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
-                        Video Presentation
+                        Virtual Presentation
                     </h1>
                     <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-                        Professional video demonstrations with full-featured controls
+                        Professional video demonstrations
                     </p>
                 </div>
 
@@ -22,9 +22,9 @@ export default function VideoDemo() {
                     <div className="bg-white rounded-2xl shadow-2xl p-6 border border-gray-200">
                         <div className="space-y-4">
                             <div className="flex items-center justify-between">
-                                <h2 className="text-2xl font-bold text-gray-800">Marketing Analytics</h2>
+                                <h2 className="text-2xl font-bold text-gray-800">Video 1</h2>
                                 <span className="px-3 py-1 bg-blue-100 text-blue-800 text-sm font-medium rounded-full">
-                                    HD Quality
+                                    
                                 </span>
                             </div>
                             <p className="text-gray-600">
@@ -45,9 +45,9 @@ export default function VideoDemo() {
                     <div className="bg-white rounded-2xl shadow-2xl p-6 border border-gray-200">
                         <div className="space-y-4">
                             <div className="flex items-center justify-between">
-                                <h2 className="text-2xl font-bold text-gray-800">Data Visualization</h2>
+                                <h2 className="text-2xl font-bold text-gray-800">Video 2</h2>
                                 <span className="px-3 py-1 bg-green-100 text-green-800 text-sm font-medium rounded-full">
-                                    4K Ready
+                                    
                                 </span>
                             </div>
                             <p className="text-gray-600">

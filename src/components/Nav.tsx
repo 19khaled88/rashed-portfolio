@@ -1,7 +1,7 @@
 "use client";
 import Link from "next/link";
 import { useState } from "react";
-import { HomeIcon, InformationCircleIcon, BriefcaseIcon, EnvelopeIcon } from '@heroicons/react/24/outline';
+import { HomeIcon, InformationCircleIcon, FolderIcon, WrenchScrewdriverIcon, PlayCircleIcon, EnvelopeIcon } from '@heroicons/react/24/outline';
 
 export default function Navbar() {
     const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -11,22 +11,22 @@ export default function Navbar() {
 
     // Navigation items array
     const navItems = [
-        { name: "Home", href: "#hero", icon: HomeIcon },
+        { name: "Home", href: "#home", icon: HomeIcon },
         { name: "About", href: "#about", icon: InformationCircleIcon },
-        { name: "Expertise", href: "#skills", icon: BriefcaseIcon },
-        { name: "Service&Project", href: "#Projects", icon: BriefcaseIcon },
-        { name: "Demo", href: "#videDemo", icon: BriefcaseIcon },
-        { name: "Contact", href: "#contact", icon: EnvelopeIcon },
+        { name: "Service", href: "#services", icon: WrenchScrewdriverIcon },
+        { name: "Projects", href: "#projects", icon: FolderIcon },
+        { name: "Demo", href: "#demo", icon: PlayCircleIcon },
+        { name: "Book a Free Audit", href: "", icon: EnvelopeIcon },
     ];
 
-    const handleNavClick =(href:string)=>{
+    const handleNavClick = (href: string) => {
         setIsMobileMenuOpen(false);
 
         // If it's a hash link ( link #contact), scroll to that section 
-        if(href.startsWith('#')){
+        if (href.startsWith('#')) {
             const element = document.querySelector(href);
-            if(element){
-                element.scrollIntoView({behavior: 'smooth'});
+            if (element) {
+                element.scrollIntoView({ behavior: 'smooth' });
             }
         }
     }
@@ -99,23 +99,28 @@ export default function Navbar() {
                     </div>
                     <ul className="flex flex-col h-full gap-4 p-4">
                         {navItems.map((item, index) => {
-                            const Icon = item.icon;
-                            return (
-                                <li
-                                    key={index}
-                                    className="flex items-center p-1 text-lg gap-x-2 text-slate-600 hover:text-red-500"
-                                >
-                                    <Link 
-                                        onClick={() => { handleNavClick(item.href) }} 
-                                        href={item.href} 
-                                        className="flex items-center"
+                                const Icon = item.icon;
+                                return (
+                                    <li
+                                        key={index}
+                                        className="flex items-center p-1 text-lg gap-x-2 text-slate-600 hover:text-red-500"
                                     >
-                                        <Icon className="w-5 h-5 mr-1" />
-                                        {item.name}
-                                    </Link>
-                                </li>
-                            )
-                        }
+                                        <Link
+                                            onClick={() => { handleNavClick(item.href) }}
+                                            href={item.name !== 'Book a Free Audit' ?  item.href : 'https://calendly.com/'}
+                                            className={`flex items-center ${item.name === "Book a Free Audit" ? "bg-gradient-to-r from-blue-500 to-blue-700 text-white shadow-[0_6px_18px_rgba(37,99,235,0.18)] px-4 py-2 rounded-md text-sm" : ""}` }
+                                            id={item.name}
+                                        >
+                                            {
+                                                item.name !== "Book a Free Audit" && (
+                                                    <Icon className="w-5 h-5 mr-1" />
+                                                )
+                                            }
+                                            {item.name}
+                                        </Link>
+                                    </li>
+                                )
+                            }
                         )}
                         {/* <li className="mt-4">
                 <button className="bg-red-600 text-white px-8 py-2 rounded-md hover:bg-red-500">
@@ -130,18 +135,26 @@ export default function Navbar() {
                     <ul className="flex flex-col gap-2 mt-2 mb-4 lg:mb-0 lg:mt-0 lg:flex-row lg:items-center lg:gap-6">
                         {navItems.map((item, index) => {
                             const Icon = item.icon;
+
                             return (
                                 <li
                                     key={index}
                                     className="flex items-center p-1 text-lg gap-x-2 text-slate-600 hover:text-red-500"
                                 >
-                                    <Link 
-                                        href={item.href} 
-                                        className="flex items-center"
-                                        onClick={() => handleNavClick(item.href)} 
+                                    <Link
+                                        href={item.name !== 'Book a Free Audit' ?  item.href : 'https://calendly.com/'}
+                                        className={ `flex items-center ${item.name === "Book a Free Audit" ? "bg-gradient-to-r from-blue-500 to-blue-700 text-white shadow-[0_6px_18px_rgba(37,99,235,0.18)] px-4 py-2 rounded-md text-sm" : ""}` }
+                                        onClick={() => handleNavClick(item.href)}
+                                        id={item.name}
+                                       
                                     >
-                                        <Icon className="w-5 h-5 mr-1" />
-                                        <label className="text-align:center">{item.name}</label>
+                                        {
+                                            item.name !== "Book a Free Audit" && (
+                                                <Icon className="w-5 h-5 mr-1" />
+                                            )
+                                        }
+                                        
+                                        {item.name}
                                     </Link>
                                 </li>
                             )
