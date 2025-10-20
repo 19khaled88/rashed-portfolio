@@ -114,10 +114,10 @@ export default function Footer() {
               Navigation
             </h4>
             <div className="space-y-3">
-              {['Home', 'About', 'Skills', 'Projects', 'Contact'].map((item) => (
+              {['Home', 'About', 'Services', 'Projects', 'Demo', 'Book A Free Audit'].map((item) => (
                 <a
                   key={item}
-                  href={`#${item.toLowerCase()}`}
+                  href={item === 'Book A Free Audit' ? 'https://calendly.com/' : `#${item.toLowerCase()}`}
                   className="block text-gray-400 hover:text-white text-sm transition-all duration-300 py-2 hover:pl-2 hover:bg-white/5 rounded"
                 >
                   {item}
