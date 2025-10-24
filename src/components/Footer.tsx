@@ -46,7 +46,7 @@ export default function Footer() {
                 <div className="p-2 bg-green-500/10 rounded-lg group-hover:bg-green-500/20 transition-colors">
                   <IoCallOutline className="text-green-400 text-sm" />
                 </div>
-                <span className="text-gray-300 text-sm">+880 17 3044 4520</span>
+                <span className="text-gray-300 text-sm">+880 17 1404 1300</span>
               </div>
               
               <div className="flex items-center gap-3 group">
