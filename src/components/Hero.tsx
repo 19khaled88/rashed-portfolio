@@ -21,11 +21,11 @@ const Hero = () => {
   };
 
   return (
-    <section className="min-h-[calc(100vh-4rem)] bg-neutral-100 flex items-center" id='home'>
-      <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between w-full gap-10">
+    
+      <section className="min-h-[calc(100vh-4rem)] bg-neutral-100 max-w-7xl mx-auto flex flex-col md:flex-row  justify-between w-full gap-10 px-6 pt-16" id='home'>
 
         {/* Left Content */}
-        <div className="flex-1 text-center md:text-left">
+        <div className="flex-1 text-center md:pt-45 md:text-left">
           <p className="text-4xl md:text-5xl font-bold text-gray-800 mb-4">
             Hi, I&apos;m <span className="text-indigo-600">Rashedul Alam</span>
           </p>
@@ -46,7 +46,7 @@ const Hero = () => {
         </div>
 
         {/* Right Floating Image */}
-        <div className="flex-1 relative h-64">
+        <div className="flex-1 md:pt-45 relative h-64">
           {!imageLoaded && (
             <div className="w-full max-w-sm mx-auto h-64 bg-gradient-to-r from-gray-200 to-gray-300 rounded-xl overflow-hidden relative">
               {/* Shimmer effect */}
@@ -71,8 +71,8 @@ const Hero = () => {
             priority // Add this for above-the-fold images
           />
         </div>
-      </div>
-    </section>
+      </section>
+    
   );
 };
 

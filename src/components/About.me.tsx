@@ -39,7 +39,7 @@ const About = () => {
   return (
     <section 
       ref={sectionRef}
-      className="min-h-screen flex flex-col bg-white py-16 overflow-hidden"
+      className="min-h-screen flex flex-col bg-white py-16 px-6 overflow-hidden"
       id="about" 
     >
       {/* Header Section */}
@@ -55,7 +55,7 @@ const About = () => {
 
       {/* Main Content */}
       <div className="flex-grow flex items-center justify-center">
-        <div className="max-w-7xl w-full px-6">
+        <div className="max-w-7xl w-full">
           <div className="flex flex-col lg:flex-row gap-10">
             
             {/* Left Column - Introduction */}
