@@ -12,7 +12,7 @@ interface VideoPlayerProps {
   autoPlay?: boolean;
   controls?: boolean;
   loop?: boolean;
-  muted?: boolean;
+  muted?: boolean; // This will be forced to true
 }
 
 export default function VideoPlayer({
@@ -23,30 +23,41 @@ export default function VideoPlayer({
   autoPlay = false,
   controls = true,
   loop = false,
-  muted = false
+  muted = true // Force muted by default
 }: VideoPlayerProps) {
   const videoRef = useRef<HTMLVideoElement>(null);
   const [isPlaying, setIsPlaying] = useState(autoPlay);
-  const [isMuted, setIsMuted] = useState(muted);
+  const [isMuted, setIsMuted] = useState(true); // Always true
   const [currentTime, setCurrentTime] = useState(0);
   const [duration, setDuration] = useState(0);
-  const [volume, setVolume] = useState(1);
+  const [volume, setVolume] = useState(0); // Always 0
   const [playbackRate, setPlaybackRate] = useState(1);
   const [showControls, setShowControls] = useState(true);
 
+  // Force mute the video on mount and whenever it plays
   useEffect(() => {
     const video = videoRef.current;
     if (!video) return;
+
+    // Force mute the video
+    video.muted = true;
+    video.volume = 0;
 
     const updateTime = () => setCurrentTime(video.currentTime);
     const updateDuration = () => setDuration(video.duration);
 
     video.addEventListener('timeupdate', updateTime);
     video.addEventListener('loadedmetadata', updateDuration);
+    video.addEventListener('play', () => {
+      // Ensure video stays muted when playing
+      video.muted = true;
+      video.volume = 0;
+    });
 
     return () => {
       video.removeEventListener('timeupdate', updateTime);
       video.removeEventListener('loadedmetadata', updateDuration);
+      video.removeEventListener('play', () => {});
     };
   }, []);
 
@@ -54,20 +65,30 @@ export default function VideoPlayer({
     const video = videoRef.current;
     if (!video) return;
 
+    // Ensure video is muted before playing
+    video.muted = true;
+    video.volume = 0;
+
     if (isPlaying) {
       video.pause();
     } else {
-      video.play();
+      video.play().catch(error => {
+        console.log('Video play failed:', error);
+      });
     }
     setIsPlaying(!isPlaying);
   };
 
+  // Override mute function to always keep it muted
   const toggleMute = () => {
     const video = videoRef.current;
     if (!video) return;
 
-    video.muted = !video.muted;
-    setIsMuted(!isMuted);
+    // Force mute regardless of user action
+    video.muted = true;
+    video.volume = 0;
+    setIsMuted(true);
+    setVolume(0);
   };
 
   const handleSeek = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -79,14 +100,16 @@ export default function VideoPlayer({
     setCurrentTime(newTime);
   };
 
+  // Override volume change to always keep volume at 0
   const handleVolumeChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const video = videoRef.current;
     if (!video) return;
 
-    const newVolume = parseFloat(e.target.value);
-    video.volume = newVolume;
-    setVolume(newVolume);
-    setIsMuted(newVolume === 0);
+    // Force volume to 0 and muted to true
+    video.volume = 0;
+    video.muted = true;
+    setVolume(0);
+    setIsMuted(true);
   };
 
   const handlePlaybackRate = (rate: number) => {
@@ -125,15 +148,17 @@ export default function VideoPlayer({
       onMouseEnter={() => setShowControls(true)}
       onMouseLeave={() => setShowControls(false)}
     >
-      {/* Video Element */}
+      {/* Video Element - Always muted */}
       <video
         ref={videoRef}
         className="w-full h-full"
         poster={poster}
         autoPlay={autoPlay}
         loop={loop}
-        muted={muted}
+        muted={true} // Force muted
+        
         onClick={togglePlay}
+        playsInline
       >
         <source src={src} type="video/mp4" />
         Your browser does not support the video tag.
@@ -169,22 +194,24 @@ export default function VideoPlayer({
                 {isPlaying ? <Pause size={20} /> : <Play size={20} />}
               </button>
 
-              {/* Volume Control */}
-              <div className="flex items-center space-x-2">
+              {/* Volume Control - Always muted and disabled */}
+              <div className="flex items-center space-x-2 opacity-50 cursor-not-allowed" title="Sound is disabled">
                 <button
                   onClick={toggleMute}
-                  className="text-white hover:text-gray-300 transition-colors"
+                  className="text-white transition-colors"
+                  disabled
                 >
-                  {isMuted || volume === 0 ? <VolumeX size={18} /> : <Volume2 size={18} />}
+                  <VolumeX size={18} />
                 </button>
                 <input
                   type="range"
                   min="0"
                   max="1"
                   step="0.1"
-                  value={volume}
+                  value={0}
                   onChange={handleVolumeChange}
-                  className="w-20 h-1 bg-gray-600 rounded-lg appearance-none cursor-pointer [&::-webkit-slider-thumb]:appearance-none [&::-webkit-slider-thumb]:h-3 [&::-webkit-slider-thumb]:w-3 [&::-webkit-slider-thumb]:rounded-full [&::-webkit-slider-thumb]:bg-white"
+                  disabled
+                  className="w-20 h-1 bg-gray-600 rounded-lg appearance-none cursor-not-allowed [&::-webkit-slider-thumb]:appearance-none [&::-webkit-slider-thumb]:h-3 [&::-webkit-slider-thumb]:w-3 [&::-webkit-slider-thumb]:rounded-full [&::-webkit-slider-thumb]:bg-gray-400"
                 />
               </div>
 
@@ -248,6 +275,11 @@ export default function VideoPlayer({
           </div>
         </button>
       )}
+
+      {/* Mute Indicator Badge */}
+      <div className="absolute top-2 right-2 bg-black/70 text-white text-xs px-2 py-1 rounded backdrop-blur-sm">
+        🔇 Muted
+      </div>
     </div>
   );
 }
