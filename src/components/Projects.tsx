@@ -22,7 +22,6 @@ const Projects = () => {
             images: [ // Multiple images
                 '/images/GA4 reports_Page_1.jpg',
                 '/images/GA4 reports_Page_2.jpg'
-                
             ]
         },
         {
