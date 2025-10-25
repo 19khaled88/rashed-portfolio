@@ -107,7 +107,7 @@ export default function Navbar() {
                                     >
                                         <Link
                                             onClick={() => { handleNavClick(item.href) }}
-                                            href={item.name !== 'Book a Free Audit' ?  item.href : 'https://calendly.com/'}
+                                            href={item.name !== 'Book a Free Audit' ?  item.href : 'https://calendly.com/rashedulalam362'}
                                             className={`flex items-center ${item.name === "Book a Free Audit" ? "bg-gradient-to-r from-blue-500 to-blue-700 text-white shadow-[0_6px_18px_rgba(37,99,235,0.18)] px-4 py-2 rounded-md text-sm" : ""}` }
                                             id={item.name}
                                         >
@@ -142,7 +142,7 @@ export default function Navbar() {
                                     className="flex items-center p-1 text-lg gap-x-2 text-slate-600 hover:text-red-500"
                                 >
                                     <Link
-                                        href={item.name !== 'Book a Free Audit' ?  item.href : 'https://calendly.com/'}
+                                        href={item.name !== 'Book a Free Audit' ?  item.href : 'https://calendly.com/rashedulalam362'}
                                         className={ `flex items-center ${item.name === "Book a Free Audit" ? "bg-gradient-to-r from-blue-500 to-blue-700 text-white shadow-[0_6px_18px_rgba(37,99,235,0.18)] px-4 py-2 rounded-md text-sm" : ""}` }
                                         onClick={() => handleNavClick(item.href)}
                                         id={item.name}
