@@ -1,7 +1,8 @@
 'use client'
 import React, { useState } from "react";
 import { motion, Variants } from "framer-motion";
-import { BarChart3, Server, Activity, ExternalLink, ZoomIn, X, ChevronLeft, ChevronRight } from "lucide-react";
+
+import { ExternalLink, ZoomIn, X, ChevronLeft, ChevronRight } from "lucide-react";
 import Image from "next/image";
 
 const Projects = () => {
@@ -22,7 +23,6 @@ const Projects = () => {
             images: [ // Multiple images
                 '/images/GA4 reports_Page_1.jpg',
                 '/images/GA4 reports_Page_2.jpg'
-                
             ]
         },
         {
