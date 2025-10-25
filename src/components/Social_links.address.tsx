@@ -24,7 +24,7 @@ const ContactInfo = () => {
 
   // Social links data
   const socialLinks: SocialLink[] = [
-    { name: 'GitHub', url: 'https://github.com/yourusername', icon: <FaGithub /> },
+    { name: 'GitHub', url: 'https://github.com/rashedulalam', icon: <FaGithub /> },
     { name: 'LinkedIn', url: 'https://www.linkedin.com/in/trackingrashed/', icon: <FaLinkedin /> },
     
     { name: 'Instagram', url: 'https://www.instagram.com/rashedulalam362/', icon: <FaInstagram /> },
