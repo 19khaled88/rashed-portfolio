@@ -3,6 +3,7 @@ import Footer from "@/components/Footer";
 import Hero from "@/components/Hero";
 import Projects from "@/components/Projects";
 import Services from "@/components/Services";
+
 import VideoDemo from "@/components/VideoDemo";
 // import ContactInfo from "@/components/Social_links.address";
 

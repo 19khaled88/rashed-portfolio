@@ -1,6 +1,7 @@
 'use client'
 import React, { useState } from "react";
 import { motion, Variants } from "framer-motion";
+
 import { ExternalLink, ZoomIn, X, ChevronLeft, ChevronRight } from "lucide-react";
 import Image from "next/image";
 
