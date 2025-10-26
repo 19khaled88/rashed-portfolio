@@ -14,6 +14,7 @@ interface VideoPlayerProps {
   controls?: boolean;
   loop?: boolean;
   muted?: boolean; // This will be forced to true
+  preload?:string;
 }
 
 export default function VideoPlayer({
@@ -24,9 +25,11 @@ export default function VideoPlayer({
   autoPlay = false,
   controls = true,
   loop = false,
-  muted = true // Force muted by default
+  muted = true, // Force muted by default
+  preload
 }: VideoPlayerProps) {
   const videoRef = useRef<HTMLVideoElement>(null);
+  const [generatePoster, setGeneratePoster] = useState<string | null>(null);
   const [isPlaying, setIsPlaying] = useState(autoPlay);
   const [isMuted, setIsMuted] = useState(true); // Always true
   const [currentTime, setCurrentTime] = useState(0);
@@ -43,16 +46,39 @@ export default function VideoPlayer({
     // Force mute the video
     video.muted = true;
     video.volume = 0;
+    video.src = src;
+    video.crossOrigin = 'anonymous'; // required if hosted elsewhere
+
+    // Set default playback speed ( e.g., 1.5x)
+    video.playbackRate = 1.5;
+    setPlaybackRate(1.5);
 
     const updateTime = () => setCurrentTime(video.currentTime);
     const updateDuration = () => setDuration(video.duration);
 
     video.addEventListener('timeupdate', updateTime);
     video.addEventListener('loadedmetadata', updateDuration);
+    video.addEventListener('seeked',()=>{
+      //create a canvas and draw the current frame
+      const canvas = document.createElement('canvas');
+      canvas.width = video.videoWidth;
+      canvas.height = video.videoHeight;
+      const ctx = canvas.getContext('2d');
+
+      if(ctx){
+        ctx.drawImage(video, 0, 0, canvas.width, canvas.height);
+        //convert to base64 dta url
+        const posterData = canvas.toDataURL('image/jpeg');
+        setGeneratePoster(posterData);
+      }
+    });
+
     video.addEventListener('play', () => {
       // Ensure video stays muted when playing
       video.muted = true;
       video.volume = 0;
+      video.playbackRate = 1.5; // keep enforcing 1.5x while playing
+      
     });
 
     return () => {
@@ -60,7 +86,7 @@ export default function VideoPlayer({
       video.removeEventListener('loadedmetadata', updateDuration);
       video.removeEventListener('play', () => {});
     };
-  }, []);
+  }, [src]);
 
   const togglePlay = () => {
     const video = videoRef.current;
@@ -143,6 +169,7 @@ export default function VideoPlayer({
     return `${minutes}:${seconds.toString().padStart(2, '0')}`;
   };
 
+  
   return (
     <div 
       className={`relative bg-black rounded-lg overflow-hidden group ${className}`}
@@ -153,11 +180,11 @@ export default function VideoPlayer({
       <video
         ref={videoRef}
         className="w-full h-full"
-        poster={poster}
+        poster={generatePoster || poster}
         autoPlay={autoPlay}
         loop={loop}
-        muted={true} // Force muted
-        
+        muted={muted} // Force muted
+        preload={preload}
         onClick={togglePlay}
         playsInline
       >
