@@ -24,8 +24,6 @@ const Skills = () => {
         { name: "Google Analytics 4 (GA4)", level: "95%" },
         { name: "Google Tag Manager (Web & Server-Side)", level: "90%" },
         { name: "Looker Studio Dashboards", level: "90%" },
-        { name: "BigQuery& Data Layer Setup", level: "85%" },
-        { name: "•	Universal Analytics (Legacy Support)", level: "80%" }
       ]
     },
     {
@@ -36,7 +34,6 @@ const Skills = () => {
         { name: "Facebook Pixel & Conversion API (CAPI)", level: "90%" },
         { name: "Google Ads Conversion Tracking", level: "90%" },
         { name: "Meta Ads Tracking", level: "85%" },
-        { name: "SEO & Data-Driven Marketing", level: "80%" }
       ]
     }
   ];
