@@ -4,7 +4,7 @@ import VideoPlayer from "./VideoPlayer";
 
 export default function VideoDemo() {
     return (
-        <div className="min-h-[calc(100vh-4rem)] bg-gradient-to-br from-gray-50 to-gray-100 py-12 overflow-hidden" id="demo">
+        <div className="min-h-[calc(100vh-4rem)] bg-gradient-to-br from-gray-50 to-gray-100 py-12 px-6 overflow-hidden" id="demo">
             
                 {/* Header */}
                 <div className="text-center space-y-4 pt-8">
@@ -17,7 +17,7 @@ export default function VideoDemo() {
                 </div>
 
                 {/* Full Featured Players - Large Size */}
-                <div className="grid grid-cols-1 xl:grid-cols-2 gap-8 pt-8 max-w-7xl w-full px-4 mx-auto">
+                <div className="grid grid-cols-1 xl:grid-cols-2 gap-8 pt-8 max-w-7xl w-full mx-auto">
                     {/* Video 1 */}
                     <div className="bg-white rounded-2xl shadow-2xl p-6 border border-gray-200">
                         <div className="space-y-4">
@@ -32,11 +32,12 @@ export default function VideoDemo() {
                             </p>
                             <VideoPlayer
                                 src="/videos/Video1.mp4"
-                                poster="/images/video-poster.jpg"
+                                poster=""
                                 title="Marketing Analytics Dashboard"
                                 className="w-full h-96" // Increased height
                                 autoPlay={false}
                                 controls={true}
+                                preload="auto"
                             />
                         </div>
                     </div>
@@ -55,7 +56,7 @@ export default function VideoDemo() {
                             </p>
                             <VideoPlayer
                                 src="/videos/Video2.mp4"
-                                poster="/images/video-poster.jpg"
+                                poster=""
                                 title="Data Visualization Masterclass"
                                 className="w-full h-96" // Increased height
                                 autoPlay={false}

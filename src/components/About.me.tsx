@@ -56,7 +56,7 @@ const About = () => {
       {/* Main Content */}
       <div className="flex-grow flex items-center justify-center">
         <div className="max-w-7xl w-full">
-          <div className="flex flex-col lg:flex-row gap-10">
+          <div className="flex flex-col lg:flex-row gap-10 pt-12">
             
             {/* Left Column - Introduction */}
             <div className={`w-full transition-all duration-700 ease-out ${
