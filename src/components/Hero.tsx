@@ -37,9 +37,18 @@ const Hero = () => {
           </p>
 
           <div className="flex justify-center md:justify-start gap-4">
-            <button className="flex flex-row items-center gap-2 px-6 py-3 bg-indigo-600 text-white rounded-lg text-sm hover:bg-indigo-700 transition cursor-pointer" id='resume'>
+            {/* <button className="flex flex-row items-center gap-2 px-6 py-3 bg-indigo-600 text-white rounded-lg text-sm hover:bg-indigo-700 transition cursor-pointer" id='resume'>
               <FaRegFileAlt />  View Resume
-            </button>
+            </button> */}
+            <a
+              href="https://drive.google.com/file/d/192ollVkxY4h2OTBoKqh_0sCmqJOtZaCZ/view"
+              target="_blank"
+              rel="noopener noreferrer"
+              style={{ backgroundColor: 'rgb(79 70 229) !important' }}
+              className="flex flex-row items-center gap-2 px-6 py-3 bg-indigo-600 text-white rounded-lg text-sm hover:bg-indigo-700 transition cursor-pointer"
+            >
+              <FaRegFileAlt /> View Resume
+            </a>
             <a href="#contact" className="flex flex-row items-center gap-2 px-6 py-3 border border-indigo-600 text-indigo-600 rounded-lg text-sm hover:bg-indigo-50 transition">
               <FaMobileAlt /> Contact Me
             </a>
