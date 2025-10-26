@@ -24,7 +24,7 @@ const Hero = () => {
 
     <section className="min-h-[calc(100vh-4rem)] bg-neutral-100 mx-auto px-6 pt-16" id='home'>
 
-      <div className='flex flex-col md:flex-row justify-between w-full gap-10 max-w-7xl mx-auto'>
+      <div className='flex flex-col md:flex-row justify-between w-full gap-10 max-w-screen-2xl mx-auto'>
         {/* Left Content */}
         <div className="flex-1 text-center md:pt-45 md:text-left">
           <p className="text-4xl md:text-5xl font-bold text-gray-800 mb-4">
