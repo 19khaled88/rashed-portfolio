@@ -8,6 +8,9 @@ const Hero = () => {
   const navRef = useRef<HTMLDivElement>(null);
   const heroRef = useRef<HTMLDivElement>(null);
   const [imageLoaded, setImageLoaded] = useState(false);
+  const [isHovered, setIsHovered] = useState(false);
+
+
 
   useEffect(() => {
     if (navRef.current && heroRef.current) {
@@ -45,11 +48,20 @@ const Hero = () => {
               target="_blank"
               rel="noopener noreferrer"
               style={{ backgroundColor: 'rgb(79 70 229) !important' }}
-              className="flex flex-row items-center gap-2 px-6 py-3 bg-indigo-600 text-white rounded-lg text-sm hover:bg-indigo-700 transition cursor-pointer"
+              className="flex flex-row items-center gap-2 px-2 md:px-6 py-3 bg-indigo-600 text-white rounded-lg text-sm hover:bg-indigo-700 transition cursor-pointer"
             >
               <FaRegFileAlt /> View Resume
             </a>
-            <a href="#contact" className="flex flex-row items-center gap-2 px-6 py-3 border border-indigo-600 text-indigo-600 rounded-lg text-sm hover:bg-indigo-50 transition">
+            <a
+              href="#contact"
+              style={{
+                color: isHovered ? '#ffffff' : '#4f46e5',
+                backgroundColor: isHovered ? '#4f46e5' : 'transparent'
+              }}
+              onMouseEnter={()=>setIsHovered(true)}
+              onMouseLeave={()=>setIsHovered(false)}
+              className="flex flex-row items-center gap-2 px-2 md:px-6 py-3 border border-indigo-600 text-indigo-600 rounded-lg text-sm transition"
+            >
               <FaMobileAlt /> Contact Me
             </a>
           </div>
