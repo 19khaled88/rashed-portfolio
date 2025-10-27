@@ -1,29 +1,33 @@
+'use client'
+
 // components/Footer.tsx
-import { FaGithub, FaLinkedin,  FaRegEnvelope, FaFacebook, FaInstagram, FaGlobe, FaArrowRight } from 'react-icons/fa';
+
+import { FaGithub, FaLinkedin, FaRegEnvelope, FaFacebook, FaInstagram, FaGlobe, FaArrowRight } from 'react-icons/fa';
 import { IoCallOutline, IoLocationOutline } from 'react-icons/io5';
 
 export default function Footer() {
   const currentYear = new Date().getFullYear();
+  
 
   return (
     <footer className="bg-gray-900 text-white relative overflow-hidden" id='contact'>
       {/* Background Gradient Effect */}
-      <div className="absolute inset-0 bg-gradient-to-br from-gray-900 via-gray-900 to-blue-900/20 opacity-50"></div>
-      
+      <div className="absolute inset-0 bg-linear-to-br from-gray-900 via-gray-900 to-blue-900/20 opacity-50"></div>
+
       <div className="relative max-w-8xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
-        
+
         {/* Main Footer Content */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 mb-12">
-          
+
           {/* Brand & Contact - 4 cols */}
           <div className="lg:col-span-4 space-y-6">
             <div className="space-y-4">
-              <h3 className="text-2xl font-bold bg-gradient-to-r from-blue-400 via-purple-500 to-blue-600 bg-clip-text text-transparent">
+              <h3 className="text-2xl font-bold bg-linear-to-r from-blue-400 via-purple-500 to-blue-600 bg-clip-text text-transparent">
                 Rashedul Alam
               </h3>
               <p className="text-gray-300 text-sm leading-relaxed max-w-md">
-                Analytics Strategist transforming data into actionable insights. 
-                Specializing in GA4, GTM implementation, and data-driven decision making 
+                Analytics Strategist transforming data into actionable insights.
+                Specializing in GA4, GTM implementation, and data-driven decision making
                 for business growth.
               </p>
             </div>
@@ -34,21 +38,21 @@ export default function Footer() {
                 <div className="p-2 bg-blue-500/10 rounded-lg group-hover:bg-blue-500/20 transition-colors">
                   <FaRegEnvelope className="text-blue-400 text-sm" />
                 </div>
-                <a 
-                  href="mailto:rashedulalam362@gmail.com" 
+                <a
+                  href="mailto:rashedulalam362@gmail.com"
                   className="text-gray-300 text-sm group-hover:text-white transition-colors"
                 >
                   rashedulalam362@gmail.com
                 </a>
               </div>
-              
+
               <div className="flex items-center gap-3 group">
                 <div className="p-2 bg-green-500/10 rounded-lg group-hover:bg-green-500/20 transition-colors">
                   <IoCallOutline className="text-green-400 text-sm" />
                 </div>
                 <span className="text-gray-300 text-sm">+880 17 1404 1300</span>
               </div>
-              
+
               <div className="flex items-center gap-3 group">
                 <div className="p-2 bg-purple-500/10 rounded-lg group-hover:bg-purple-500/20 transition-colors">
                   <IoLocationOutline className="text-purple-400 text-sm" />
@@ -60,9 +64,9 @@ export default function Footer() {
                 <div className="p-2 bg-cyan-500/10 rounded-lg group-hover:bg-cyan-500/20 transition-colors">
                   <FaGlobe className="text-cyan-400 text-sm" />
                 </div>
-                <a 
-                  href="https://rashedulalam.com" 
-                  target="_blank" 
+                <a
+                  href="https://rashedulalam.com"
+                  target="_blank"
                   rel="noopener noreferrer"
                   className="text-gray-300 text-sm group-hover:text-white transition-colors"
                 >
@@ -74,23 +78,23 @@ export default function Footer() {
             {/* Social Links */}
             <div className="flex space-x-3 pt-4">
               {[
-                { 
-                  icon: <FaGithub className="text-base" />, 
+                {
+                  icon: <FaGithub className="text-base" />,
                   url: 'https://github.com/rashedulalam362/',
                   color: 'hover:bg-gray-700'
                 },
-                { 
-                  icon: <FaLinkedin className="text-base" />, 
+                {
+                  icon: <FaLinkedin className="text-base" />,
                   url: 'https://www.linkedin.com/in/trackingrashed/',
                   color: 'hover:bg-blue-600'
                 },
-                { 
-                  icon: <FaFacebook className="text-base" />, 
+                {
+                  icon: <FaFacebook className="text-base" />,
                   url: 'https://www.facebook.com/md.rashedul.alam.639050/',
                   color: 'hover:bg-blue-500'
                 },
-                { 
-                  icon: <FaInstagram className="text-base" />, 
+                {
+                  icon: <FaInstagram className="text-base" />,
                   url: 'https://www.instagram.com/rashedulalam362/',
                   color: 'hover:bg-pink-600'
                 },
@@ -117,8 +121,14 @@ export default function Footer() {
               {['Home', 'About', 'Services', 'Projects', 'Demo', 'Book A Free Audit'].map((item) => (
                 <a
                   key={item}
-                  href={item === 'Book A Free Audit' ? 'https://calendly.com/' : `#${item.toLowerCase()}`}
-                  className="block text-gray-400 hover:text-white text-sm transition-all duration-300 py-2 hover:pl-2 hover:bg-white/5 rounded"
+                  href={item === 'Book A Free Audit' ? 'https://calendly.com/rashedulalam362' : `#${item.toLowerCase()}`}
+                  style={{
+                    color: item === 'Book A Free Audit' ? 'white' : '',
+                    textAlign: item === 'Book A Free Audit' ? 'center': 'left',
+                    backgroundImage: item === 'Book A Free Audit' ? 'linear-gradient(to right, #3b82f6, #1d4ed8)' : 'none'
+                  }}
+                  className={`block text-gray-400 hover:text-white text-sm transition-all duration-300 py-2 hover:pl-2 hover:bg-white-50 rounded `}
+                 
                 >
                   {item}
                 </a>
@@ -157,7 +167,7 @@ export default function Footer() {
                 Ready to transform your data into insights? Let&apos;s discuss your project.
               </p>
             </div>
-            
+
             <form className="space-y-4">
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <input
@@ -202,7 +212,7 @@ export default function Footer() {
 
               <button
                 type="submit"
-                className="w-full bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white font-medium py-3 px-6 rounded-lg transition-all duration-300 transform hover:scale-[1.02] shadow-lg hover:shadow-blue-500/25 flex items-center justify-center gap-2 group"
+                className="w-full bg-linear-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white font-medium py-3 px-6 rounded-lg transition-all duration-300 transform hover:scale-[1.02] shadow-lg hover:shadow-blue-500/25 flex items-center justify-center gap-2 group"
               >
                 <span>Send Message</span>
                 <FaArrowRight className="group-hover:translate-x-1 transition-transform" />
@@ -227,7 +237,7 @@ export default function Footer() {
                 Crafted with precision for data-driven excellence
               </div>
             </div>
-            
+
             <div className="flex gap-6 text-sm text-gray-400">
               <a href="/privacy" className="hover:text-white transition-colors duration-300">Privacy Policy</a>
               <a href="/terms" className="hover:text-white transition-colors duration-300">Terms of Service</a>

@@ -159,7 +159,7 @@ const Projects = () => {
 
     return (
         <>
-            <div className="min-h-screen bg-gradient-to-br from-gray-50 via-blue-50 to-indigo-50 text-gray-900 px-6 py-12 flex flex-col" id="projects">
+            <div className="min-h-screen bg-linear-to-br from-gray-50 via-blue-50 to-indigo-50 text-gray-900 px-6 py-12 flex flex-col" id="projects">
                 {/* Header Section */}
                 <motion.div 
                     className="pt-8"
@@ -168,7 +168,7 @@ const Projects = () => {
                     viewport={{ once: false, margin: "-50px" }}
                     variants={headerVariants}
                 >
-                    <h2 className="text-4xl font-bold mb-8 text-center bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
+                    <h2 className="text-4xl font-bold mb-8 text-center bg-linear-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
                         Recent Projects
                     </h2>
                     <p className="text-xl text-gray-600 max-w-2xl mx-auto px-4 text-center">
@@ -205,10 +205,10 @@ const Projects = () => {
                                 }}
                             >
                                 {/* Animated background gradient */}
-                                <div className="absolute inset-0 bg-gradient-to-br from-blue-500/5 via-purple-500/5 to-pink-500/5 opacity-0 group-hover:opacity-100 transition-all duration-500 ease-out" />
+                                <div className="absolute inset-0 bg-linear-to-br from-blue-500/5 via-purple-500/5 to-pink-500/5 opacity-0 group-hover:opacity-100 transition-all duration-500 ease-out" />
                                 
                                 {/* Border glow effect */}
-                                <div className="absolute inset-0 rounded-2xl bg-gradient-to-r from-blue-500/20 to-purple-500/20 opacity-0 group-hover:opacity-100 transition-all duration-500 ease-out p-px -m-px">
+                                <div className="absolute inset-0 rounded-2xl bg-linear-to-r from-blue-500/20 to-purple-500/20 opacity-0 group-hover:opacity-100 transition-all duration-500 ease-out p-px -m-px">
                                     <div className="w-full h-full bg-white rounded-2xl transition-all duration-500" />
                                 </div>
 
@@ -227,7 +227,7 @@ const Projects = () => {
 
                                     {/* Stylish Small Image Container */}
                                     <motion.div 
-                                        className="relative rounded-2xl overflow-hidden bg-gradient-to-br from-gray-100 to-gray-200 border border-gray-300/30 shadow-inner"
+                                        className="relative rounded-2xl overflow-hidden bg-linear-to-br from-gray-100 to-gray-200 border border-gray-300/30 shadow-inner"
                                         variants={imageContainerVariants}
                                     >
                                         {/* Small preview image */}
@@ -324,7 +324,7 @@ const Projects = () => {
 
                                 {/* Smooth overlay effect */}
                                 <motion.div 
-                                    className="absolute inset-0 bg-gradient-to-br from-blue-500/0 to-purple-500/0 rounded-2xl"
+                                    className="absolute inset-0 bg-linear-to-br from-blue-500/0 to-purple-500/0 rounded-2xl"
                                     whileHover={{
                                         background: "linear-gradient(135deg, rgba(59, 130, 246, 0.03) 0%, rgba(168, 85, 247, 0.03) 100%)",
                                         transition: { duration: 0.4, ease: "easeOut" }
@@ -394,15 +394,7 @@ const Projects = () => {
                                 className="w-full h-auto max-h-[80vh] object-contain"
                             />
                             
-                            {/* Project info at bottom */}
-                            <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/80 to-transparent p-6 text-white">
-                                <h3 className="text-xl font-semibold mb-2">
-                                    {projects[selectedImageIndex].title}
-                                </h3>
-                                <p className="text-sm opacity-90">
-                                    {projects[selectedImageIndex].description}
-                                </p>
-                            </div>
+                           
                         </div>
                     </motion.div>
                 </motion.div>
