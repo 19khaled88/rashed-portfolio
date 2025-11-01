@@ -1,5 +1,6 @@
 'use client'
 
+import { useState } from 'react';
 // components/Footer.tsx
 
 import { FaGithub, FaLinkedin, FaRegEnvelope, FaFacebook, FaInstagram, FaGlobe, FaArrowRight } from 'react-icons/fa';
@@ -7,8 +8,67 @@ import { IoCallOutline, IoLocationOutline } from 'react-icons/io5';
 
 export default function Footer() {
   const currentYear = new Date().getFullYear();
-  
 
+
+  const [formData, setFormData] = useState({
+    name: '',
+    email: '',
+    service: '',
+    message: ''
+  });
+
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>('idle');
+  const [errorMessage, setErrorMessage] = useState('');
+
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) => {
+    const { name, value } = e.target;
+    setFormData(prev => ({
+      ...prev,
+      [name]: value
+    }));
+
+    // Clear error message when user starts typing
+    if (submitStatus === 'error') {
+      setSubmitStatus('idle');
+      setErrorMessage('');
+    }
+  };
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setIsSubmitting(true);
+    setSubmitStatus('idle');
+    setErrorMessage('');
+
+    try {
+      const response = await fetch('/api/contact', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData),
+      });
+
+      const result = await response.json();
+
+      if (response.ok) {
+        setSubmitStatus('success');
+        setFormData({ name: '', email: '', service: '', message: '' });
+        // Reset form after success
+        setTimeout(() => setSubmitStatus('idle'), 5000);
+      } else {
+        setSubmitStatus('error');
+        setErrorMessage(result.error || 'Failed to send message')
+      }
+    } catch (error) {
+      console.error('Submission error:', error);
+      setSubmitStatus('error');
+      setErrorMessage('Network error. Please try again')
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
   return (
     <footer className="bg-gray-900 text-white relative overflow-hidden" id='contact'>
       {/* Background Gradient Effect */}
@@ -124,11 +184,11 @@ export default function Footer() {
                   href={item === 'Book A Free Audit' ? 'https://calendly.com/rashedulalam362' : `#${item.toLowerCase()}`}
                   style={{
                     color: item === 'Book A Free Audit' ? 'white' : '',
-                    textAlign: item === 'Book A Free Audit' ? 'center': 'left',
+                    textAlign: item === 'Book A Free Audit' ? 'center' : 'left',
                     backgroundImage: item === 'Book A Free Audit' ? 'linear-gradient(to right, #3b82f6, #1d4ed8)' : 'none'
                   }}
                   className={`block text-gray-400 hover:text-white text-sm transition-all duration-300 py-2 hover:pl-2 hover:bg-white-50 rounded `}
-                 
+
                 >
                   {item}
                 </a>
@@ -168,26 +228,39 @@ export default function Footer() {
               </p>
             </div>
 
-            <form className="space-y-4">
+            <form onSubmit={handleSubmit} className="space-y-4">
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <input
                   type="text"
+                  name='name'
                   placeholder="Your name"
+                  value={formData.name}
+                  onChange={handleInputChange}
                   className="w-full px-4 py-3 bg-gray-800 border border-gray-700 rounded-lg text-white placeholder-gray-400 text-sm focus:outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-500/20 transition-all"
                   required
+                  disabled={isSubmitting}
                 />
                 <input
                   type="email"
+                  name='email'
                   placeholder="Your email"
+                  value={formData.email}
+                  onChange={handleInputChange}
                   className="w-full px-4 py-3 bg-gray-800 border border-gray-700 rounded-lg text-white placeholder-gray-400 text-sm focus:outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-500/20 transition-all"
                   required
+                  disabled={isSubmitting}
                 />
               </div>
 
               {/* Enhanced Dropdown */}
               <div className="relative">
                 <select
+                  name='service'
+                  value={formData.service}
+                  onChange={handleInputChange}
                   className="w-full px-4 py-3 bg-gray-800 border border-gray-700 rounded-lg text-white text-sm focus:outline-none focus:border-purple-500 focus:ring-2 focus:ring-purple-500/20 transition-all appearance-none pr-12"
+
+                  disabled={isSubmitting}
                 >
                   <option value="">Select service</option>
                   <option value="ga4-audit">GA4 Audit & Implementation</option>
@@ -205,17 +278,45 @@ export default function Footer() {
 
               <textarea
                 rows={3}
+                name='message'
+                value={formData.message}
+                onChange={handleInputChange}
                 placeholder="Tell me about your project..."
                 className="w-full px-4 py-3 bg-gray-800 border border-gray-700 rounded-lg text-white placeholder-gray-400 text-sm focus:outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-500/20 transition-all resize-none"
                 required
+                disabled={isSubmitting}
               />
+
+
+              {/* Status Messages */}
+              {submitStatus === 'success' && (
+                <div className="p-3 bg-green-500/20 border border-green-500/50 rounded-lg text-green-400 text-sm">
+                  ✅ Message sent successfully! I&apos;ll get back to you soon.
+                </div>
+              )}
+
+              {submitStatus === 'error' && (
+                <div className="p-3 bg-red-500/20 border border-red-500/50 rounded-lg text-red-400 text-sm">
+                  ❌ {errorMessage || 'Failed to send message. Please try again.'}
+                </div>
+              )}
 
               <button
                 type="submit"
+                disabled={isSubmitting}
                 className="w-full bg-linear-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white font-medium py-3 px-6 rounded-lg transition-all duration-300 transform hover:scale-[1.02] shadow-lg hover:shadow-blue-500/25 flex items-center justify-center gap-2 group"
               >
-                <span>Send Message</span>
-                <FaArrowRight className="group-hover:translate-x-1 transition-transform" />
+                {isSubmitting ? (
+                  <>
+                    <div className="w-4 h-4 border-2 border-white border-t-transparent rounded-full animate-spin"></div>
+                    <span>Sending...</span>
+                  </>
+                ) : (
+                  <>
+                    <span>Send Message</span>
+                    <FaArrowRight className="group-hover:translate-x-1 transition-transform" />
+                  </>
+                )}
               </button>
 
               <div className="flex items-center justify-center gap-2 text-xs text-gray-400">
